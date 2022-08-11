@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   # skip_before_action :verify_authenticity_token
   
-  before_action :set_question, only: %i[update show destroy edit]
+  before_action :set_question, only: %i[update show destroy edit hide]
 
   def create
     question = Question.create(question_params)
@@ -35,7 +35,6 @@ class QuestionsController < ApplicationController
   end
 
   def hide
-    @question = Question.find(params[:id])
     @question.update(hidden: true)
   end
 
