@@ -1,0 +1,27 @@
+<h1>Edit question <%= @question.id %></h1>
+
+<%= form_with model: @question do |form| %>
+  <p>
+    <%= form.label :body, "Question text" %>
+  </p>
+  <p>
+    <%= form.text_area :body, rows: 5 %>
+  </p>
+  <p>
+    <%= form.label :user_id, "User ID" %>
+  </p>
+  <p>
+    <%= form.number_field :user_id %>
+  </p>
+  <p>
+    <%= form.label :hidden, "Hidden" %>
+  </p>
+  <p>
+    <%= form.check_box :hidden %>
+  </p>
+  <p>
+    <%= form.submit "Save" %>
+  </p>
+<% end %>
+
+<%= link_to "Back", :back %>

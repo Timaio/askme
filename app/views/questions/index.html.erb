@@ -1,0 +1,11 @@
+<h2> Questions </h2>
+
+<% @questions.each do |question| %>
+  <p><%= link_to question.body, question, :class => question.hidden? && 'semitransparent' %></p>
+<% end %>
+
+<p>
+  <%= link_to "Create a new question", new_question_path %>
+</p>
+
+<%= request.host_with_port %>

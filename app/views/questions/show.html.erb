@@ -1,0 +1,11 @@
+<h1>Question <%= @question.id %></h1>
+<%= @question.body %>
+
+<% unless @question.hidden? %>
+  <p><%= button_to "Hide", hide_question_path, method: :put %></p>
+<% end %>
+
+<p><%= link_to "Edit", edit_question_path%></p>
+<p><%= button_to "Delete", question_path, method: :delete %></p>
+
+<p><%= link_to "All questions", questions_path %></p>
