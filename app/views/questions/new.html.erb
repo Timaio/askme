@@ -1,11 +1,4 @@
 <h2>New question</h2>
-<form action="/questions" method="POST">
-  <p><label for="question[body]">Question text</label></p>
-  <p><textarea name="question[body]"></textarea></p>
-  <p><label for="question[user_id]">User ID</label></p>
-  <p><input type="number" name="question[user_id]"></p>
-  <p><input type="submit" value="Create"></p>
-</form>
 
 <%= form_with model: @question do |form| %>
   <p>
