@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #e0e0e0;  
+  border-top: 1px solid #e0e0e0; 
 }
 
 .question:last-of-type {  
@@ -16,17 +16,19 @@
   word-break: break-word;
 }
 
-.question__side {
-  width: 250px;
-  margin-left: 10px;
+.question__info {
+  width: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;  
 }
 
-.question__menu {
-  display: flex;
+.question__date {
+  width: max-content;
+}
 
+.question__actions {
+  display: flex;
 }
 
 @media (max-width: 600px) {
@@ -35,9 +37,8 @@
     align-items: start;
   }
 
-  .question__side {
+  .question__info {
     width: 100%;
     margin-left: 0;
   }
 }
-

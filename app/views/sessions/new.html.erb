@@ -1,13 +1,13 @@
 <h1 class="text-center">Sign in</h1>
 
-<div class="mt-lg content-center">
+<div class="mt-lg content-center user-form">
   <%= form_with scope: :session, url: session_path, data: {turbo: false} do |form| %>
-    <p><%= form.label :email %></p>
-    <%= form.text_field :email, class: "form-text-field" %>
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-text-field mb-md" %>
 
-    <p class="mt-md"><%= form.label :password %></p>
+    <%= form.label :password %>
     <%= form.password_field :password, class: "form-text-field" %>
   
-    <p class="mt-md"><%= form.button "Sign in", class: "button button-primary" %></p>
+    <%= form.button "Sign in", class: "button button-primary mt-lg" %>
   <% end %>
 </div>

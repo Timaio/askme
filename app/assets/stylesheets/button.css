@@ -42,7 +42,7 @@ form.button_to {
   color: var(--color-secondary);
 }
 
-@media (max-width: 350px) {
+@media (max-width: 450px) {
   .button-primary {
     width: 100%;
   }

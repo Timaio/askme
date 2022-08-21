@@ -1,7 +1,7 @@
 :root {
   --color-primary: rgb(28, 124, 225);
   --color-secondary: rgb(31, 30, 70);
-  --color-header: rgb(31, 30, 70);
+  --color-header: #1f1e46;
   --text-primary: #0c1739;
   --text-grey: #adafc2;
   --text-invert: #fff;
@@ -9,6 +9,7 @@
 
 body {
   color: var(--text-primary);
+  font-size: 17px;
 }
 
 .container {
@@ -18,8 +19,8 @@ body {
 }
 
 .content-center {
+  display: block;
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
 }
-

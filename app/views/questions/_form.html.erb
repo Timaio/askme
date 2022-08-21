@@ -7,15 +7,13 @@
 <% end %>
 
 <%= form_with model: question, data: {turbo: false}, class: "mb-lg" do |form| %>
-  <%= form.text_area :body, rows: 2, class: "form-text-area mb-sm", maxlength: 280 %>
+  <%= form.text_area :body, rows: 3, class: "form-text-area mb-sm", maxlength: 280 %>
   
-  <p><%= form.label :user_id, "User ID" %></p>
+  <%= form.label :user_id, "User ID" %>
   <%= form.text_field :user_id, class: "form-text-field mb-sm" %>
+  
+  <%= form.label :hidden, "Hidden" %>
+  <%= form.check_box :hidden %>  
 
-  <p class="mb-md">
-    <%= form.label :hidden, "Hidden" %>
-    <%= form.check_box :hidden %>
-  </p>
-
-  <p><%= form.button "Save", class: "button button-primary" %></p>
+  <%= form.button "Save", class: "content-center button button-primary mt-md" %>
 <% end %>

@@ -1,33 +1,33 @@
 <h1 class="text-center">Edit profile</h1>
 
-<% if @user.errors.any? %>
-  <div class="text-red text-small mt-md">
-    <% @user.errors.full_messages.each do |message| %>
-      <p class="mb-sm">*<%= message %></p>
-    <% end %>
-  </div>
-<% end %>
-
 <div class="mt-lg content-center user-form">
-  <%= form_with model: @user, data: {turbo: false} do |form| %>
-    <p><%= form.label :name, "Name" %></p>
-    <p><%= form.text_field :name, class: "form-text-field mb-md" %></p>
+  <% if @user.errors.any? %>
+    <div class="text-red text-small mt-md">
+      <% @user.errors.full_messages.each do |message| %>
+        <p class="mb-sm">*<%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
 
-    <p><%= form.label :nickname, "Nickname" %></p>
-    <p><%= form.text_field :nickname, class: "form-text-field mb-md", maxlength: 40 %></p>
+  <%= form_with model: @user, data: {turbo: false} do |form| %>
+    <%= form.label :name, "Name" %>
+    <%= form.text_field :name, class: "form-text-field mb-md" %>
+
+    <%= form.label :nickname, "Nickname" %>
+    <%= form.text_field :nickname, class: "form-text-field mb-md", maxlength: 40 %>
 
     <p class="text-small">*Leave these fields blank, if you do not want to change your password</p>
     
-    <p><%= form.label :password, "Password" %></p>
-    <p><%= form.password_field :password, class: "form-text-field mb-md" %></p>
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password, class: "form-text-field mb-md" %>
 
-    <p><%= form.label :password_confirmation, "Password confirmation" %></p>
-    <p><%= form.password_field :password_confirmation, class: "form-text-field mb-md" %></p>
+    <%= form.label :password_confirmation, "Password confirmation" %>
+    <%= form.password_field :password_confirmation, class: "form-text-field mb-md" %>
 
-    <p><%= form.label :header_color, "Header color" %></p>
-    <p><%= form.color_field :header_color, class: "form-text-field mb-md" %></p>
+    <%= form.label :header_color, "Header color" %>
+    <%= form.color_field :header_color, class: "form-text-field mb-md", value: (@user.header_color || "#1f1e46") %>
 
-    <p><%= form.button "Save", class: "button button-primary" %></p>
+    <%= form.button "Save", class: "button button-primary" %>
   <% end %>
 
   <div class="mt-lg">

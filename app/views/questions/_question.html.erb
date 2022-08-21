@@ -1,21 +1,17 @@
 <div class="question">
-  <div class="<%= question.hidden? ? 'semitransparent' : '' %> question__body">
+  <div class="<%= question.hidden? ? 'semitransparent' : '' %> question__body">    
     <p><%= question.body %></p>
   </div>
 
-  <div class="question__side">
-    <div class="text-grey">
+  <div class="question__info ml-md">
+    <div class="text-grey question__date">
       <%= l(question.created_at, format: :short) %>
     </div>
 
-    <div class="question__menu">
+    <div class="question__actions ml-md">
       <%= button_to toggle_visibility_question_path(question), method: :put, class: "button button-transparent", 
         title: (question.hidden? ? "Unhide" : "Hide") do %>
-          <% if question.hidden? %>          
-            <%= fa_icon("eye") %>
-          <% else %>
-            <%= fa_icon("eye-slash") %>
-          <% end %>
+          <% question.hidden? ? fa_icon("eye") : fa_icon("eye-slash") %>          
       <% end %>
 
       <%= button_to edit_question_path(question), method: :get, class: "button button-transparent", title: "Edit" do %>
