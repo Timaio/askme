@@ -8,7 +8,7 @@
   </div>
 <% end %>
 
-<div class="mt-lg content-center">
+<div class="mt-lg content-center user-form">
   <%= form_with model: @user, data: {turbo: false} do |form| %>
     <p><%= form.label :name, "Name" %></p>
     <p><%= form.text_field :name, class: "form-text-field mb-md" %></p>
