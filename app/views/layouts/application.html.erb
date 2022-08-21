@@ -2,15 +2,69 @@
 <html>
   <head>
     <title>Askme</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@700&family=Poppins:wght@400;800&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
   </head>
 
   <body>
-    <%= yield %>
+    <% if current_user&.header_color.present? %>
+      <style>
+        :root {
+          --color-header: <%= current_user.header_color %>;
+        }
+      </style>
+    <% end %>
+
+    <header class="mb-lg">
+      <div class="container">
+        <div class="header__inner">
+          <%= link_to "askme", root_path, class: "logo" %>
+          
+          <div class="header-menu">
+            <% if current_user.present? %>
+              <div class="dropdown">
+                <div class="dropdown-button"><%= display_nickname current_user.nickname %></div>
+
+                <div class="dropdown-content">
+                  <%= button_to "Log out", session_path, method: :delete, class: "dropdown-item" %>
+                  <%= link_to "Edit profile", edit_user_path(current_user), class: "dropdown-item" %>
+                </div>       
+              </div>       
+            <% else %>
+              <%= link_to "Sign up", new_user_path, class: "header-menu__item mr-sm"%>
+              <%= link_to "Sign in", new_session_path, class: "header-menu__item mr-sm" %>
+            <% end %>
+            
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="container">
+      <% if flash[:notice].present? %>
+        <div class="message message--notice mb-md">
+          <i class="fa-solid fa-circle-check"></i>
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <% if flash[:alert].present? %>
+        <div class="message message--alert mb-md">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

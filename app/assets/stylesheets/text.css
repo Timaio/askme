@@ -1,3 +1,32 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 .semitransparent {
   opacity: 50%;
+}
+
+a {  
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+.text-grey {
+  color: var(--text-grey);
+}
+
+.text-red {
+  color: rgb(196, 0, 0);
+}
+
+.text-small {
+  font-size: 0.7em;
+}
+
+.text-center {
+  text-align: center;
 }

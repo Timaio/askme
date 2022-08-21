@@ -1,0 +1,38 @@
+<h1 class="text-center">Edit profile</h1>
+
+<% if @user.errors.any? %>
+  <div class="text-red text-small mt-md">
+    <% @user.errors.full_messages.each do |message| %>
+      <p class="mb-sm">*<%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="mt-lg content-center user-form">
+  <%= form_with model: @user, data: {turbo: false} do |form| %>
+    <p><%= form.label :name, "Name" %></p>
+    <p><%= form.text_field :name, class: "form-text-field mb-md" %></p>
+
+    <p><%= form.label :nickname, "Nickname" %></p>
+    <p><%= form.text_field :nickname, class: "form-text-field mb-md", maxlength: 40 %></p>
+
+    <p class="text-small">*Leave these fields blank, if you do not want to change your password</p>
+    
+    <p><%= form.label :password, "Password" %></p>
+    <p><%= form.password_field :password, class: "form-text-field mb-md" %></p>
+
+    <p><%= form.label :password_confirmation, "Password confirmation" %></p>
+    <p><%= form.password_field :password_confirmation, class: "form-text-field mb-md" %></p>
+
+    <p><%= form.label :header_color, "Header color" %></p>
+    <p><%= form.color_field :header_color, class: "form-text-field mb-md" %></p>
+
+    <p><%= form.button "Save", class: "button button-primary" %></p>
+  <% end %>
+
+  <div class="mt-lg">
+    <%= button_to "Delete account", user_path, method: :delete, 
+      form: {data: {turbo_confirm: "Are you sure you want to delete this account?"}},
+      class: "link-button text-red text-small" %>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="question">
+  <div class="<%= question.hidden? ? 'semitransparent' : '' %> question__body">
+    <p><%= question.body %></p>
+  </div>
+
+  <div class="question__side">
+    <div class="text-grey">
+      <%= l(question.created_at, format: :short) %>
+    </div>
+
+    <div class="question__menu">
+      <%= button_to toggle_visibility_question_path(question), method: :put, class: "button button-transparent", 
+        title: (question.hidden? ? "Unhide" : "Hide") do %>
+          <% if question.hidden? %>          
+            <%= fa_icon("eye") %>
+          <% else %>
+            <%= fa_icon("eye-slash") %>
+          <% end %>
+      <% end %>
+
+      <%= button_to edit_question_path(question), method: :get, class: "button button-transparent", title: "Edit" do %>
+        <%= fa_icon("pen-to-square") %>
+      <% end %>
+
+      <%= button_to question_path(question), method: :delete, class: "button button-transparent", title: "Delete",
+        form: {data: {turbo_confirm: 'Are you sure you want to delete this question?'}} do %>
+          <%= fa_icon("xmark") %>
+      <% end %>
+    </div>
+  </div>
+</div>

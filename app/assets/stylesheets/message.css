@@ -1,0 +1,12 @@
+.message {
+  padding: 10px 14px;  
+  border-radius: 10px;
+}
+
+.message--notice {
+  background-color: rgb(148, 255, 214);
+}
+
+.message--alert {
+  background-color: rgb(255, 222, 130);
+}

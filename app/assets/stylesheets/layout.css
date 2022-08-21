@@ -1,0 +1,25 @@
+:root {
+  --color-primary: rgb(28, 124, 225);
+  --color-secondary: rgb(31, 30, 70);
+  --color-header: rgb(31, 30, 70);
+  --text-primary: #0c1739;
+  --text-grey: #adafc2;
+  --text-invert: #fff;
+}
+
+body {
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.content-center {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+

@@ -1,9 +1,8 @@
-<h2> Questions </h2>
+<h1 class="mb-lg"> 
+  <%= @questions.count %> <%= incline @questions.count, "question", "questions" %>
+</h1>
 
-<% @questions.each do |question| %>
-  <p><%= link_to question.body, question, :class => question.hidden? && 'semitransparent' %></p>
-<% end %>
+<%= render "form", question: @question %>
 
-<p>
-  <%= link_to "[Create a new question]", new_question_path %>
-</p>
+<%= render @questions %>
+

@@ -1,0 +1,49 @@
+.button {
+  padding: 6px 10px;
+  font-size: inherit;  
+  font-family: inherit;
+  border-radius: 30px;  
+  border: 0;
+  cursor: pointer;
+}
+
+.button-primary {
+  min-width: 200px;
+  padding: 8px 15px;  
+  color: var(--text-invert);
+  background-color: var(--color-primary);  
+}
+
+.button-transparent {
+  padding: 6px 10px;
+  color: var(--text-grey);
+  background-color: transparent;
+}
+
+.button-transparent:hover {
+  color: var(--text-primary);
+}
+
+form.button_to {
+  display: inline-block;
+}
+
+.link-button {
+  display: inline;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.link-button:hover {
+  color: var(--color-secondary);
+}
+
+@media (max-width: 350px) {
+  .button-primary {
+    width: 100%;
+  }
+}
