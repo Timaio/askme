@@ -5,8 +5,19 @@
       <p><%= question.body %></p>
     </div>
 
+    <div class="question_users text-small">
+      to <%= link_to (display_nickname question.user.nickname), user_path(question.user) %>
+      from 
+      <% if question.author.present? %>
+        <%= link_to (display_nickname question.author.nickname), user_path(question.author) %>  
+      <% else %>
+        Anonymous <i class="fa-solid fa-mask"></i>
+      <% end %>
+    </div>
+
     <% if question.answer.present? %>
       <div class="question__answer">
+        Answer: 
         <%= question.answer %>
       </div>
     <% end %>

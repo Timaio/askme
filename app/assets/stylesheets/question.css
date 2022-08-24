@@ -16,8 +16,13 @@
   word-break: break-word;
 }
 
-.question__answer {
+.question__users {
   color: rgb(0, 123, 232);
+  font-style: italic;
+}
+
+.question__answer {
+  color: rgb(0, 139, 70);
   font-style: italic;
 }
 
