@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[edit update destroy]
-  
+  before_action :set_user, only: %i[edit update destroy show]
+  before_action :authorize_user, only: %i[edit update destroy]
+
   def new
     @user = User.new
   end
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
     end    
   end
 
-  def edit     
+  def edit
   end
 
   def update
@@ -40,6 +41,11 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: "Account deleted"
   end
 
+  def show
+    @questions = @user.questions.order("created_at DESC")
+    @question = Question.new(user: @user)
+  end
+
   private 
 
   def user_params
@@ -49,5 +55,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def authorize_user
+    redirect_with_alert unless current_user == @user
   end
 end

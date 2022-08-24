@@ -1,6 +1,15 @@
 <div class="question">
-  <div class="<%= question.hidden? ? 'semitransparent' : '' %> question__body">    
-    <p><%= question.body %></p>
+
+  <div class="question__fact">
+    <div class="<%= 'semitransparent ' if question.hidden? %>question__body">    
+      <p><%= question.body %></p>
+    </div>
+
+    <% if question.answer.present? %>
+      <div class="question__answer">
+        <%= question.answer %>
+      </div>
+    <% end %>
   </div>
 
   <div class="question__info ml-md">
@@ -8,20 +17,22 @@
       <%= l(question.created_at, format: :short) %>
     </div>
 
-    <div class="question__actions ml-md">
-      <%= button_to toggle_visibility_question_path(question), method: :put, class: "button button-transparent", 
-        title: (question.hidden? ? "Unhide" : "Hide") do %>
-          <% question.hidden? ? fa_icon("eye") : fa_icon("eye-slash") %>          
-      <% end %>
+    <% if current_user == question.user %>
+      <div class="question__actions ml-md">
+        <%= button_to toggle_visibility_question_path(question), method: :put, class: "button button-transparent", 
+          title: (question.hidden? ? "Unhide" : "Hide") do %>
+            <% question.hidden? ? fa_icon("eye") : fa_icon("eye-slash") %>          
+        <% end %>
 
-      <%= button_to edit_question_path(question), method: :get, class: "button button-transparent", title: "Edit" do %>
-        <%= fa_icon("pen-to-square") %>
-      <% end %>
+        <%= button_to edit_question_path(question), method: :get, class: "button button-transparent", title: "Edit" do %>
+          <%= fa_icon("pen-to-square") %>
+        <% end %>
 
-      <%= button_to question_path(question), method: :delete, class: "button button-transparent", title: "Delete",
-        form: {data: {turbo_confirm: 'Are you sure you want to delete this question?'}} do %>
-          <%= fa_icon("xmark") %>
-      <% end %>
-    </div>
+        <%= button_to question_path(question), method: :delete, class: "button button-transparent", title: "Delete",
+          form: {data: {turbo_confirm: 'Are you sure you want to delete this question?'}} do %>
+            <%= fa_icon("xmark") %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -11,7 +11,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@700&family=Poppins:wght@400;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@700&family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;800&family=Praise&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
   </head>
 
@@ -32,11 +33,10 @@
           <div class="header-menu">
             <% if current_user.present? %>
               <div class="dropdown">
-                <div class="dropdown-button"><%= display_nickname current_user.nickname %></div>
+                <div class="dropdown-button"><%= link_to (display_nickname current_user.nickname), user_path(current_user) %></div>
 
                 <div class="dropdown-content">
-                  <%= button_to "Log out", session_path, method: :delete, class: "dropdown-item" %>
-                  <%= link_to "Edit profile", edit_user_path(current_user), class: "dropdown-item" %>
+                  <%= button_to "Log out", session_path, method: :delete, class: "dropdown-item" %>                  
                 </div>       
               </div>       
             <% else %>

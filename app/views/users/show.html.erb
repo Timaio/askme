@@ -1,0 +1,25 @@
+<h1 class="mb-md"><%= @user.name %></h1>
+<p class="mb-lg"><%= display_nickname @user.nickname %></p>
+
+<% if current_user == @user %>
+  <p>
+    <%= link_to edit_user_path(@user) do %> 
+      <%= fa_icon("pencil") %> Edit profile
+    <% end %>
+  </p>
+<% end %>
+
+<%= link_to "Ask me", new_question_path(user_id: @user.id) %>
+
+<%= render "questions/form", question: @question %>
+
+<h1 class="mb-lg"> 
+  <%= @questions.count %> <%= incline @questions.count, "question", "questions" %>
+</h1>
+
+<% if @questions.present? %>
+  <%= render @questions %>
+<% else %>
+  <p>This user has no questions yet. Your question may come first.</p>
+<% end %>
+

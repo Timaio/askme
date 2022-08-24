@@ -16,6 +16,11 @@
   word-break: break-word;
 }
 
+.question__answer {
+  color: rgb(0, 123, 232);
+  font-style: italic;
+}
+
 .question__info {
   width: fit-content;
   display: flex;

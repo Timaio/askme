@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: %i[new create edit update destroy]
+  resources :users, except: %i[index]
   resource :session, only: %i[new create destroy]
 end
