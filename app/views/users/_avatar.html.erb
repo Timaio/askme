@@ -1,0 +1,10 @@
+<% background_class = "avatar-bg#{user.id % 5}" %>
+<% nickname_letter = user.nickname.first.upcase %>
+
+<div class="users-box__user <%= background_class %> rounded mr-md ml-md mb-md">
+  <%= link_to user_path(user) do %>
+    <h1 class="title-lg text-bold">
+      <%= nickname_letter %>
+    </h1>
+  <% end %>
+</div>

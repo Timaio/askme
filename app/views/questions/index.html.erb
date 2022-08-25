@@ -1,5 +1,14 @@
+<div>
+  <p>New users</p>
+  <div class="users-box">
+    <% @users.each do |user| %>
+      <%= render partial: "users/avatar", locals: {user: user} %>
+    <% end %>
+  </div>
+</div>
+
 <h1 class="mb-lg"> 
-  <%= @questions.count %> <%= incline @questions.count, "question", "questions" %>
+  <%= @questions.count %> last <%= incline @questions.count, "question", "questions" %>
 </h1>
 
 <%= render @questions %>

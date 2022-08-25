@@ -1,11 +1,12 @@
 class User < ApplicationRecord
   has_many :questions, dependent: :delete_all
-  has_many :questioner_questions, class_name: "Question", foreign_key: "author_id"
+  has_many :questioner_questions, class_name: "Question", foreign_key: "author_id", dependent: :nullify
   
   has_secure_password
 
   before_validation :downcase_fields
 
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :nickname, presence: true, uniqueness: true, 
     length: { maximum: 40 },

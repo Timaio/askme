@@ -24,7 +24,7 @@ header {
 }
 
 .header-menu__item:hover {
-  color: var(--color-primary);
+  color: var(--text-invert);
 }
 
 .logo {
@@ -50,6 +50,15 @@ header {
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: var(--text-invert);
+}
+
+.dropdown-button a {
+  color: var(--text-invert);
+}
+
+.dropdown-button:hover a {
+  color: var(--text-invert);
 }
 
 .dropdown-content {

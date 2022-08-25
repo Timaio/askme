@@ -1,0 +1,37 @@
+.users-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.users-box__user {
+  height: 100px;
+  flex-basis: 100px;
+  flex-grow: 0;
+  line-height: 100px;
+  text-align: center;
+}
+
+.users-box__user a {
+  color: var(--text-invert);
+}
+
+.avatar-bg0 {
+  background-color: #00a5e3;
+}
+
+.avatar-bg1 {
+  background-color: #8dd7bf;
+}
+
+.avatar-bg2 {
+  background-color: #ff96c5;
+}
+
+.avatar-bg3 {
+  background-color: #00b0ba;
+}
+
+.avatar-bg4 {
+  background-color: #0065a2;
+}
