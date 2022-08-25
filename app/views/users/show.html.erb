@@ -1,6 +1,8 @@
 <h1 class="mb-md"><%= @user.name %></h1>
 <p class="mb-lg"><%= display_nickname @user.nickname %></p>
 
+<%= render "avatar", user: @user %>
+
 <% if current_user == @user %>
   <p>
     <%= link_to edit_user_path(@user) do %> 
