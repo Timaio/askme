@@ -1,4 +1,7 @@
-class User < ApplicationRecord
+class User < ApplicationRecord  
+  include Gravtastic
+  gravtastic(secure: true, filetype: :png, size: 100, default: "retro")
+  
   has_many :questions, dependent: :delete_all
   has_many :questioner_questions, class_name: "Question", foreign_key: "author_id", dependent: :nullify
   
@@ -12,13 +15,6 @@ class User < ApplicationRecord
     length: { maximum: 40 },
     format: { with: /\A[a-z0-9_]+\z/ }
   validates :header_color, allow_nil: true, format: { with: /\A#[a-f0-9]{6}\z/ }
-
-  def to_param
-    nickname
-  end
-
-  include Gravtastic
-  gravtastic(secure: true, filetype: :png, size: 100, default: "retro")
 
   private
 

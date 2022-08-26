@@ -1,7 +1,7 @@
 <% nickname_letter = user.nickname.first.upcase %>
 
 <div class="users-box__user rounded mr-md ml-md mb-md">
-  <%= link_to user_path(user) do %>
+  <%= link_to user_path(user.nickname) do %>
     <%= image_tag user.gravatar_url, title: display_nickname(user.nickname), class: "rounded" %>
   <% end %>
 </div>

@@ -5,7 +5,7 @@
 
 <% if current_user == @user %>
   <p>
-    <%= link_to edit_user_path(@user) do %> 
+    <%= link_to edit_user_path(@user.nickname) do %> 
       <%= fa_icon("pencil") %> Edit profile
     <% end %>
   </p>

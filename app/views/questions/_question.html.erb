@@ -26,11 +26,11 @@
   <div class="question__fact">
     <div class="question_users text-small">
       <% if question.author.present? %>
-        <%= link_to display_nickname(question.author.nickname), user_path(question.author) %>  
+        <%= link_to display_nickname(question.author.nickname), user_path(question.author.nickname) %>  
       <% else %>
         Anonymous <i class="fa-solid fa-mask"></i>
       <% end %>
-      to <%= link_to display_nickname(question.user.nickname), user_path(question.user) %>
+      to <%= link_to display_nickname(question.user.nickname), user_path(question.user.nickname) %>
     </div>
 
     <div class="<%= 'semitransparent ' if question.hidden? %>question__body">    

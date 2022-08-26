@@ -1,4 +1,4 @@
 <h1 class="mb-lg">New question</h1>
-<p>for <%= link_to (display_nickname @question.user.nickname), user_path(@question.user) %></p>
+<p>for <%= link_to (display_nickname @question.user.nickname), user_path(@question.user.nickname) %></p>
 
 <%= render "form", question: @question %>

@@ -33,7 +33,7 @@
           <div class="header-menu">
             <% if current_user.present? %>
               <div class="dropdown">
-                <div class="dropdown-button"><%= link_to (display_nickname current_user.nickname), user_path(current_user) %></div>
+                <div class="dropdown-button"><%= link_to (display_nickname current_user.nickname), user_path(current_user.nickname) %></div>
 
                 <div class="dropdown-content">
                   <%= button_to "Log out", session_path, method: :delete, class: "dropdown-item" %>                  

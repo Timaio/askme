@@ -8,7 +8,7 @@
 
 <%= form_with model: question, data: {turbo: false}, class: "mb-lg" do |form| %>
   <%= form.hidden_field :user_id %>
-  <%= form.text_area :body, rows: 3, class: "form-text-area mb-sm", maxlength: 280 %>
+  <%= form.text_area :body, rows: 3, class: "form-text-area mb-sm", maxlength: 280, required: true %>
   
   <% if question.persisted? %>
     <%= form.label :answer, "Answer" %>
