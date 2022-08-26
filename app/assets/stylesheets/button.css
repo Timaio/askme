@@ -5,6 +5,7 @@
   border-radius: 30px;  
   border: 0;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 
 .button-primary {

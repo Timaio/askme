@@ -11,17 +11,27 @@
   </p>
 <% end %>
 
-<%= link_to "Ask me", new_question_path(user_id: @user.id) %>
-
 <%= render "questions/form", question: @question %>
 
-<h1 class="mb-lg"> 
-  <%= @questions.count %> <%= incline @questions.count, "question", "questions" %>
-</h1>
+<h2 class="mb-md"> 
+  <%= @questions.count %> <%= incline @questions.count, "question", "questions" %> 
+  to <%= display_nickname @user.nickname %>
+</h2>
 
 <% if @questions.present? %>
   <%= render @questions %>
 <% else %>
   <p>This user has no questions yet. Your question may come first.</p>
+<% end %>
+
+<h2 class="mb-md mt-lg"> 
+  <%= @questioner_questions.count %> <%= incline @questioner_questions.count, "question", "questions" %> 
+  from <%= display_nickname @user.nickname %>
+</h2>
+
+<% if @questioner_questions.present? %>
+  <%= render @questioner_questions %>
+<% else %>
+  <p>This user has not asked any questions yet.</p>
 <% end %>
 

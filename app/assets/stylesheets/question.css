@@ -1,8 +1,5 @@
 .question {
   padding: 10px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-top: 1px solid #e0e0e0; 
 }
 
@@ -11,7 +8,7 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.question__body p {
+.question__body p, .question__answer p {
   white-space: pre-line;
   word-break: break-word;
 }
@@ -22,12 +19,13 @@
 }
 
 .question__answer {
-  color: rgb(0, 139, 70);
+  color: rgb(180, 0, 135);
   font-style: italic;
 }
 
 .question__info {
-  width: fit-content;
+  width: 100%;
+  height: 25px;
   display: flex;
   justify-content: space-between;
   align-items: center;  

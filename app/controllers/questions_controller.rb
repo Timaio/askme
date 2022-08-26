@@ -5,14 +5,14 @@ class QuestionsController < ApplicationController
   before_action :set_question_for_current_user, only: %i[update destroy edit toggle_visibility]
 
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find_by(nickname: params[:nickname])
     @question = Question.new(user: @user)
   end
 
   def create
     question_params = params.require(:question).permit(:body, :user_id, :hidden)
     @question = Question.new(question_params)
-    @question.author = current_user if current_user
+    @question.author = current_user
      
     if @question.save
       redirect_to user_path(@question.user), notice: "New question created!"

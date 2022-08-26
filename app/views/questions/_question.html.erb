@@ -1,30 +1,6 @@
 <div class="question">
-
-  <div class="question__fact">
-    <div class="<%= 'semitransparent ' if question.hidden? %>question__body">    
-      <p><%= question.body %></p>
-    </div>
-
-    <div class="question_users text-small">
-      to <%= link_to (display_nickname question.user.nickname), user_path(question.user) %>
-      from 
-      <% if question.author.present? %>
-        <%= link_to (display_nickname question.author.nickname), user_path(question.author) %>  
-      <% else %>
-        Anonymous <i class="fa-solid fa-mask"></i>
-      <% end %>
-    </div>
-
-    <% if question.answer.present? %>
-      <div class="question__answer">
-        Answer: 
-        <%= question.answer %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="question__info ml-md">
-    <div class="text-grey question__date">
+  <div class="question__info">
+    <div class="text-grey text-small question__date">
       <%= l(question.created_at, format: :short) %>
     </div>
 
@@ -43,6 +19,27 @@
           form: {data: {turbo_confirm: 'Are you sure you want to delete this question?'}} do %>
             <%= fa_icon("xmark") %>
         <% end %>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="question__fact">
+    <div class="question_users text-small">
+      <% if question.author.present? %>
+        <%= link_to display_nickname(question.author.nickname), user_path(question.author) %>  
+      <% else %>
+        Anonymous <i class="fa-solid fa-mask"></i>
+      <% end %>
+      to <%= link_to display_nickname(question.user.nickname), user_path(question.user) %>
+    </div>
+
+    <div class="<%= 'semitransparent ' if question.hidden? %>question__body">    
+      <p><%= question.body %></p>
+    </div>
+
+    <% if question.answer.present? %>
+      <div class="question__answer ml-lg">
+        <p><%= question.answer %></p>
       </div>
     <% end %>
   </div>
