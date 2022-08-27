@@ -19,8 +19,8 @@ class User < ApplicationRecord
   private
 
   def downcase_fields
-    nickname.downcase!
-    email.downcase!
+    nickname&.downcase!
+    email&.downcase!
     header_color&.downcase!
   end
 end
