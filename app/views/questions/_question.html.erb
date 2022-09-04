@@ -47,7 +47,15 @@
 
     <% if question.answer.present? %>
       <div class="question__answer ml-lg">
-        <p><%= question.answer %></p>
+        <p>
+          <% question.answer.split(' ').each do |word| %>
+            <% if word.start_with?('#') %>
+              <%= link_to word, search_path(query: word) %>
+            <% else %>
+              <%= word %>
+            <% end %>
+          <% end %>
+        </p>
       </div>
     <% end %>
   </div>
