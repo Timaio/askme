@@ -28,13 +28,21 @@
       <% if question.author.present? %>
         <%= link_to display_nickname(question.author.nickname), user_path(question.author.nickname) %>  
       <% else %>
-        Anonymous <i class="fa-solid fa-mask"></i>
+        Anonymous
       <% end %>
       to <%= link_to display_nickname(question.user.nickname), user_path(question.user.nickname) %>
     </div>
 
     <div class="<%= 'semitransparent ' if question.hidden? %>question__body">    
-      <p><%= question.body %></p>
+      <p>
+        <% question.body.split(' ').each do |word| %>
+          <% if word.start_with?('#') %>
+            <%= link_to word, search_path(query: word) %>
+          <% else %>
+            <%= word %>
+          <% end %>
+        <% end %>
+      </p>
     </div>
 
     <% if question.answer.present? %>

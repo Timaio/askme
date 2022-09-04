@@ -1,5 +1,5 @@
 <div>
-  <p>New users</p>
+  <h2 class="mb-md">New users</h2>
   <div class="users-box">
     <% @users.each do |user| %>
       <%= render partial: "users/avatar", locals: {user: user} %>
@@ -7,8 +7,13 @@
   </div>
 </div>
 
-<h1 class="mb-lg"> 
+<h2 class="mb-md">Hashtags</h2>
+<%= render partial: "hashtags", locals: {hashtags: @hashtags} %>
+
+<h2 class="mb-md mt-lg"> 
   <%= @questions.count %> last <%= incline @questions.count, "question", "questions" %>
-</h1>
+</h2>
+
+<%= render partial: "search_form" %>
 
 <%= render @questions %>

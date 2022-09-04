@@ -9,7 +9,6 @@
 }
 
 .question__body p, .question__answer p {
-  white-space: pre-line;
   word-break: break-word;
 }
 

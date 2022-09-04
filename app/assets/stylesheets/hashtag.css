@@ -1,0 +1,16 @@
+.hashtag-box {
+  display: inline-block;
+  margin-right: 3px;
+  margin-bottom: 5px;
+  padding: 2px 8px;
+  background-color: rgb(204, 229, 255);
+  border-radius: 5px;
+}
+
+.hashtag-box {
+  color: rgb(0, 85, 175);
+}
+
+.hashtag-box:hover {
+  background-color: rgb(181, 216, 253);
+}

@@ -1,0 +1,10 @@
+<% if @questions.any? %>
+  <h1 class="mb-lg">Questions found</h1>
+  <div>
+    <% @questions.each do |question| %>
+      <%= render partial: "questions/question", locals: {question: question} %>
+    <% end %>
+  </div>
+<% else %>
+  <h1>No matching questions...</h1>
+<% end %>

@@ -1,0 +1,9 @@
+<div>
+  <% hashtags.each do |hashtag| %>    
+    <%= link_to search_path(query: hashtag.text) do %>
+      <div class="hashtag-box">
+        #<%= hashtag.text %>
+      </div>
+    <% end %>   
+  <% end %>
+</div>
