@@ -35,26 +35,14 @@
 
     <div class="<%= 'semitransparent ' if question.hidden? %>question__body">    
       <p>
-        <% question.body.split(' ').each do |word| %>
-          <% if word.start_with?('#') %>
-            <%= link_to word, search_path(query: word) %>
-          <% else %>
-            <%= word %>
-          <% end %>
-        <% end %>
+        <%= render_with_hashtags question.body %>
       </p>
     </div>
 
     <% if question.answer.present? %>
       <div class="question__answer ml-lg">
         <p>
-          <% question.answer.split(' ').each do |word| %>
-            <% if word.start_with?('#') %>
-              <%= link_to word, search_path(query: word) %>
-            <% else %>
-              <%= word %>
-            <% end %>
-          <% end %>
+          <%= render_with_hashtags question.answer %>
         </p>
       </div>
     <% end %>

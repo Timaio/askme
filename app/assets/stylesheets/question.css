@@ -10,6 +10,7 @@
 
 .question__body p, .question__answer p {
   word-break: break-word;
+  white-space: pre-line;
 }
 
 .question__users {
