@@ -9,6 +9,7 @@
 }
 
 .question__body p, .question__answer p {
+  margin-top: -15px;
   word-break: break-word;
   white-space: pre-line;
 }
@@ -19,7 +20,7 @@
 }
 
 .question__answer {
-  color: rgb(180, 0, 135);
+  color: rgb(161, 1, 201);
   font-style: italic;
 }
 

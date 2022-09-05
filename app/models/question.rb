@@ -7,16 +7,14 @@ class Question < ApplicationRecord
 
   after_commit :create_hashtags, on: %i[create update]
 
+  private
+
   def extract_hashtags(text)
-    text.scan(/#[\wа-яё]+/i).map{ |name| name.gsub("#", "").downcase }
+    text.scan(Hashtag::HASHTAG_REGEX).map{ |name| name.gsub("#", "").downcase }
   end
 
   def create_hashtags
-    all_hashtags = extract_hashtags(body)
-    all_hashtags += extract_hashtags(answer) if answer.present?
-    
-    all_hashtags.uniq.each do |text|
-      self.hashtags << (Hashtag.find_by(text: text) || Hashtag.create(text: text))
-    end
+    self.hashtags = extract_hashtags("#{body} #{answer}").uniq.map { 
+      |text| Hashtag.find_or_create_by(text: text) }
   end
 end
