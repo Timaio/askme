@@ -5,7 +5,8 @@ class Question < ApplicationRecord
 
   validates :body, presence: true, length: { maximum: 280 }
 
-  after_commit :create_hashtags, on: %i[create update]
+  before_save :update_hashtags
+  after_commit :delete_unused_hashtags, on: %i[update destroy]
 
   private
 
@@ -13,8 +14,13 @@ class Question < ApplicationRecord
     text.scan(Hashtag::HASHTAG_REGEX).map{ |name| name.gsub("#", "").downcase }
   end
 
-  def create_hashtags
+  def update_hashtags
     self.hashtags = extract_hashtags("#{body} #{answer}").uniq.map { 
       |text| Hashtag.find_or_create_by(text: text) }
+  end
+
+  def delete_unused_hashtags
+    Hashtag.left_outer_joins(:hashtags_questions)
+      .where(hashtags_questions: {hashtag_id: nil}).delete_all
   end
 end
