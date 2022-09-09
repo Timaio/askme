@@ -39,8 +39,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.order("created_at DESC").first(10)
     @users = User.order("created_at DESC").first(10)
-    @hashtags = Hashtag.left_outer_joins(:hashtags_questions)
-      .where.not(hashtags_questions: {hashtag_id: nil}).distinct.order(created_at: :desc)
+    @hashtags = Hashtag.only_used
   end
 
   def show
