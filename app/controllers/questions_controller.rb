@@ -11,8 +11,8 @@ class QuestionsController < ApplicationController
     question_params = params.require(:question).permit(:body, :user_id, :hidden)
     @question = Question.new(question_params)
     @question.author = current_user
-     
-    if @question.save
+
+    if check_captcha(@question) && @question.save
       redirect_to user_path(@question.user.nickname), notice: "New question created!"
     else
       flash.now[:alert] = "Fields filled out incorrectly."
@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
   def destroy
     @user = @question.user
     @question.destroy
-    
+
     redirect_to user_path(@user.nickname), notice: "Question deleted!"
   end
 
@@ -65,5 +65,13 @@ class QuestionsController < ApplicationController
 
   def set_question_for_current_user
     @question = current_user.questions.find(params[:id])
+  end
+
+  def check_captcha(model)
+    if current_user.present?
+      true
+    else
+      verify_recaptcha(model: model)
+    end
   end
 end

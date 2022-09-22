@@ -9,14 +9,16 @@
 <%= form_with model: question, data: {turbo: false}, class: "mb-lg" do |form| %>
   <%= form.hidden_field :user_id %>
   <%= form.text_area :body, rows: 3, class: "form-text-area mb-sm", maxlength: 280, required: true %>
-  
+
   <% if question.persisted? %>
     <%= form.label :answer, "Answer" %>
     <%= form.text_area :answer, rows: 3, class: "form-text-area mb-sm", maxlength: 280 %>
   <% end %>
 
   <%= form.label :hidden, "Hidden" %>
-  <%= form.check_box :hidden %>  
+  <%= form.check_box :hidden %>
+
+  <%= recaptcha_tags unless current_user.present? %>
 
   <%= form.button "Save", class: "content-center button button-primary mt-md" %>
 <% end %>
